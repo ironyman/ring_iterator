@@ -131,4 +131,13 @@ public:
 };
 
 template <typename T>
-using rring_iterator = ring_iterator<T, true>;
+auto make_ring_iterator(std::vector<T>& container, typename std::vector<T>::iterator const& start, size_t ring_size)
+{
+	return ring_iterator{ container, start, ring_size };
+}
+
+template <typename T>
+auto make_ring_iterator(std::vector<T>& container, typename std::vector<T>::reverse_iterator const& start, size_t ring_size)
+{
+	return ring_iterator<T, true>{ container, start, ring_size };
+}

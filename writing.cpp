@@ -55,7 +55,8 @@ TEST_F(writing_test, writing_infinite2)
 TEST_F(writing_test, reverse_writing_infinite2)
 {
 	result.resize(5);
-	rring_iterator<int> it{ result, std::make_reverse_iterator(result.begin()), 0 };
+	// ring_iterator<int, true> it{ result, std::make_reverse_iterator(result.begin()), 0 };
+	auto it = make_ring_iterator(result, std::make_reverse_iterator(result.begin()), 0);
 	std::vector<int> expected{ 10,9,8,7,6 };
 
 	std::copy(input.begin(), input.end(), it);
@@ -66,7 +67,8 @@ TEST_F(writing_test, reverse_writing_infinite2)
 TEST_F(writing_test, reverse_writing_infinite3)
 {
 	result.resize(3);
-	rring_iterator<int> it{ result, std::make_reverse_iterator(result.begin()), 0 };
+	// ring_iterator<int, true> it{ result, std::make_reverse_iterator(result.begin()), 0 };
+	auto it = make_ring_iterator(result, std::make_reverse_iterator(result.begin()), 0);
 	std::vector<int> expected{ 9,8,10};
 
 	std::copy(input.begin(), input.end(), it);
@@ -77,7 +79,8 @@ TEST_F(writing_test, reverse_writing_infinite3)
 TEST_F(writing_test, reverse_writing_infinite4)
 {
 	result.resize(3);
-	rring_iterator<int> it{ result, std::make_reverse_iterator(result.begin()+1), 0 };
+	// ring_iterator<int, true> it{ result, std::make_reverse_iterator(result.begin()+1), 0 };
+	auto it = make_ring_iterator(result, std::make_reverse_iterator(result.begin()+1), 0);
 	std::vector<int> expected{ 10, 9,8 };
 
 	std::copy(input.begin(), input.end(), it);
